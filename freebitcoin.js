@@ -8,7 +8,7 @@
 // @downloadURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.js
 // @updateURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.js
 // ==/UserScript==
-
+// ciaone
 (function() {
     'use strict';
 
