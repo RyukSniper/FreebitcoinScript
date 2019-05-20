@@ -5,6 +5,8 @@
 // @match        https://freebitco.in/*
 // @grant        unsafeWindow
 // @version 1.1
+// @downloadURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.js
+// @updateURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.js
 // ==/UserScript==
 
 (function() {
