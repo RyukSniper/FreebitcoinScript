@@ -4,7 +4,7 @@
 // @author       RyukSniper
 // @match        https://freebitco.in/*
 // @grant        unsafeWindow
-// @version 1.4
+// @version 1.5
 // @downloadURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // @updateURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // ==/UserScript==
@@ -28,17 +28,23 @@
         console.log("Oggi è il " + datagiorno + "°" + "giorno");
         if ((datagiorno > 5) && (datagiorno < 7)) {
             console.log("WEEK");
-            if (reward.captcha < 24) {
+            if (reward.captcha <= 24) {
                 console.log("sta per cliccare");
                 $("#play_without_captchas_button").click();
                 $("#free_play_form_button").click();
             } else {
-                console.log("Ancora deve cliccare");
-                console.log("mancano " + timeremaning.time + " Minuti");
-                $("#play_without_captchas_button").click();
-                $("#test_sound").click();
-                $("#play_with_captcha_button").click();
-                $("#test_sound").click();
+                if (timeremaning.time < 5) {
+                    console.log("mancano " + timeremaning.time + " Minuti");
+                    console.log("mancano 5 minuti o meno");
+                    setTimeout(function() {
+                        location.reload();
+                    }, 60000);
+                } else {
+                    console.log("mancano " + timeremaning.time + " Minuti");
+                    setTimeout(function() {
+                        location.reload();
+                    }, 150000);
+                }
             }
         } else {
             if ((dataore >= 23) && (dataore <= 9)) {
@@ -47,13 +53,23 @@
                     console.log("sta per cliccare");
                     $("#play_without_captchas_button").click();
                     $("#free_play_form_button").click();
+                    setTimeout(function() {
+                        location.reload();
+                    }, 150000);
                 } else {
                     console.log("Ancora deve cliccare");
-                    console.log("mancano " + timeremaning.time + " Minuti");
-                    $("#play_without_captchas_button").click();
-                    $("#test_sound").click();
-                    $("#play_with_captcha_button").click();
-                    $("#test_sound").click();
+                    if (timeremaning.time < 5) {
+                        console.log("mancano " + timeremaning.time + " Minuti");
+                        console.log("mancano 5 minuti o meno");
+                        setTimeout(function() {
+                            location.reload();
+                        }, 60000);
+                    } else {
+                        console.log("mancano " + timeremaning.time + " Minuti");
+                        setTimeout(function() {
+                            location.reload();
+                        }, 150000);
+                    }
                 }
             } else {
                 if ((dataore >= 13) && (dataore <= 14)) {
@@ -62,6 +78,9 @@
                         console.log("sta per cliccare");
                         $("#play_without_captchas_button").click();
                         $("#free_play_form_button").click();
+                        setTimeout(function() {
+                            location.reload();
+                        }, 150000);
                     }
                 } else {
                     console.log("orario di lavoro");
