@@ -97,9 +97,6 @@
                         }, 60000);
                     } else {
                         console.log("mancano " + timeremaning.time + " Minuti");
-                        if(timeremaning.time = 'NaN'){
-                            $("#test_sound").click();
-                        }
                         setTimeout(function() {
                             location.reload();
                         }, 150000);
