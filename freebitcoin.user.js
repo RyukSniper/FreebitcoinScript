@@ -72,7 +72,7 @@
                     }
                 }
             } else {
-                if ((dataore >= 13) && (dataore <= 14)) {
+                if ((dataore >= 13) && (dataore < 14)) {
                     console.log("Orario di pranzo a lavoro");
                     if (reward.captcha < 12) {
                         console.log("sta per cliccare");
