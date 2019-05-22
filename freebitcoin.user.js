@@ -75,18 +75,10 @@
                         setTimeout(function() {
                             location.reload();
                         }, 60000);
-                    } else {
-                        if (isNaN(timeremaning.time)) {
-                            console.log("Click ora")
-                            setTimeout(function() {
-                                location.reload();
-                            }, 60000);
-                        } else {
-                            console.log("mancano " + timeremaning.time + " Minuti");
-                            setTimeout(function() {
-                                location.reload();
-                            }, 150000);
-                        }
+                    } else {console.log("mancano " + timeremaning.time + " Minuti");
+                    setTimeout(function() {
+                        location.reload();
+                    }, 150000);
                     }
                 }
             } else {
