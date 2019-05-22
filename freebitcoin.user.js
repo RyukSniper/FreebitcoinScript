@@ -4,7 +4,7 @@
 // @author       RyukSniper
 // @match        https://freebitco.in/*
 // @grant        unsafeWindow
-// @version 1.8.1
+// @version 1.9
 // @downloadURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // @updateURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // ==/UserScript==
@@ -47,31 +47,7 @@
                 }
             }
         } else {
-            if (dataore >= 23 && dataore <= 9) {
-                console.log("orario di clicking");
-                if (reward.captcha < 12) {
-                    console.log("sta per cliccare");
-                    $("#play_without_captchas_button").click();
-                    $("#free_play_form_button").click();
-                    setTimeout(function() {
-                        location.reload();
-                    }, 150000);
-                } else {
-                    console.log("Ancora deve cliccare");
-                    if (timeremaning.time < 5) {
-                        console.log("mancano " + timeremaning.time + " Minuti");
-                        console.log("mancano 5 minuti o meno");
-                        setTimeout(function() {
-                            location.reload();
-                        }, 60000);
-                    } else {
-                        console.log("mancano " + timeremaning.time + " Minuti");
-                        setTimeout(function() {
-                            location.reload();
-                        }, 150000);
-                    }
-                }
-            } else {
+            if (dataore <= 23 && dataore >= 9) {
                 if (dataore >= 13 && dataore < 14) {
                     console.log("Orario di pranzo a lavoro");
                     if (reward.captcha < 12) {
@@ -102,7 +78,30 @@
                         }, 150000);
                     }
                 }
-
+            } else {
+                console.log("orario di clicking");
+                if (reward.captcha < 12) {
+                    console.log("sta per cliccare");
+                    $("#play_without_captchas_button").click();
+                    $("#free_play_form_button").click();
+                    setTimeout(function() {
+                        location.reload();
+                    }, 150000);
+                } else {
+                    console.log("Ancora deve cliccare");
+                    if (timeremaning.time < 5) {
+                        console.log("mancano " + timeremaning.time + " Minuti");
+                        console.log("mancano 5 minuti o meno");
+                        setTimeout(function() {
+                            location.reload();
+                        }, 60000);
+                    } else {
+                        console.log("mancano " + timeremaning.time + " Minuti");
+                        setTimeout(function() {
+                            location.reload();
+                        }, 150000);
+                    }
+                }
             }
         }
 
