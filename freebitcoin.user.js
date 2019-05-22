@@ -4,7 +4,7 @@
 // @author       RyukSniper
 // @match        https://freebitco.in/*
 // @grant        unsafeWindow
-// @version 1.7.1
+// @version 1.8
 // @downloadURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // @updateURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // ==/UserScript==
@@ -26,7 +26,7 @@
         var dataminuti = (myDate.getMinutes());
         console.log("Sono le " + dataore + ":" + dataminuti);
         console.log("Oggi è il " + datagiorno + "°" + "giorno");
-        if ((datagiorno > 5) && (datagiorno < 7)) {
+        if (datagiorno > 5 || datagiorno < 7) {
             console.log("WEEK");
             if (reward.captcha <= 24) {
                 console.log("sta per cliccare");
@@ -47,7 +47,7 @@
                 }
             }
         } else {
-            if ((dataore >= 23) && (dataore <= 9)) {
+            if (dataore >= 23 || dataore <= 9) {
                 console.log("orario di clicking");
                 if (reward.captcha < 12) {
                     console.log("sta per cliccare");
@@ -72,7 +72,7 @@
                     }
                 }
             } else {
-                if ((dataore >= 13) && (dataore < 14)) {
+                if (dataore >= 13 || dataore < 14) {
                     console.log("Orario di pranzo a lavoro");
                     if (reward.captcha < 12) {
                         console.log("sta per cliccare");
