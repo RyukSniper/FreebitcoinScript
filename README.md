@@ -1,1 +1,1 @@
-# FreebitcoinScirpt
+# FreebitcoinScript
