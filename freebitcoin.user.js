@@ -4,7 +4,7 @@
 // @author       RyukSniper
 // @match        https://freebitco.in/*
 // @grant        unsafeWindow
-// @version 1.9.1
+// @version 1.9.1.1
 // @downloadURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // @updateURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // ==/UserScript==
@@ -77,7 +77,7 @@
                         }, 60000);
                     } else {
                         if (isNaN(timeremaning.time)) {
-                            window.alert("ready");
+                            console.log("Click ora")
                             setTimeout(function() {
                                 location.reload();
                             }, 60000);
