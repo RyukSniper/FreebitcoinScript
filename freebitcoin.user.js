@@ -4,7 +4,7 @@
 // @author       RyukSniper
 // @match        https://freebitco.in/*
 // @grant        unsafeWindow
-// @version 1.9.1.6
+// @version 1.9.1.7
 // @downloadURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // @updateURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // ==/UserScript==
@@ -19,11 +19,7 @@
         reward.points = parseInt($('.user_reward_points').text().replace(',', ""));
         console.log("Hai " + reward.points + " punti");
         reward.captcha = parseInt($('.play_without_captcha_description .bold span').text());
-        if (isNaN(reward.captcha)) {
-            console.log("Timer attivo")
-        } else {
-            console.log("Il costo senza captcha è " + reward.captcha);
-        }
+        console.log("Il costo senza captcha è " + reward.captcha);
         var myDate = new Date();
         var dataore = (myDate.getHours());
         var datagiorno = (myDate.getDay());
@@ -76,17 +72,10 @@
                             location.reload();
                         }, 60000);
                     } else {
-                        if (isNaN(timeremaning.time)) {
-                            console.log("Timer Disattivo puoi cliccare");
-                            setTimeout(function() {
-                                location.reload();
-                            }, 60000);
-                        } else {
-                            console.log("mancano " + timeremaning.time + " Minuti");
-                            setTimeout(function() {
-                                location.reload();
-                            }, 120000);
-                        }
+                        console.log("mancano " + timeremaning.time + " Minuti");
+                        setTimeout(function() {
+                            location.reload();
+                        }, 120000);
                     }
                 }
             } else {
