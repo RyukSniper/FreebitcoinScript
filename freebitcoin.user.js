@@ -4,7 +4,7 @@
 // @author       RyukSniper
 // @match        https://freebitco.in/*
 // @grant        unsafeWindow
-// @version 1.9.1.8
+// @version 1.9.1.9
 // @downloadURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // @updateURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // ==/UserScript==
@@ -30,7 +30,7 @@
         var dataminuti = (myDate.getMinutes());
         console.log("Sono le " + dataore + ":" + dataminuti);
         console.log("Oggi è il " + datagiorno + "°" + "giorno");
-        if (datagiorno >= 6 && datagiorno <= 7) {
+        if (datagiorno > 5 && datagiorno < 7) {
             console.log("WEEK");
             if (reward.captcha <= 24) {
                 console.log("sta per cliccare");
