@@ -4,7 +4,7 @@
 // @author       RyukSniper
 // @match        https://freebitco.in/*
 // @grant        unsafeWindow
-// @version 1.9.1.9
+// @version 1.9.2
 // @downloadURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // @updateURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // ==/UserScript==
@@ -36,6 +36,9 @@
                 console.log("sta per cliccare");
                 $("#play_without_captchas_button").click();
                 $("#free_play_form_button").click();
+                    setTimeout(function() {
+                        location.reload();
+                    }, 120000);
             } else {
                 if (timeremaning.time < 5) {
                     console.log("mancano " + timeremaning.time + " Minuti");
