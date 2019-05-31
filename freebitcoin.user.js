@@ -73,11 +73,18 @@
                 } else {
                     console.log("orario di lavoro");
                     if (timeremaning.time < 5) {
-                        console.log("mancano " + timeremaning.time + " Minuti");
-                        console.log("mancano 5 minuti o meno");
-                        setTimeout(function() {
-                            location.reload();
-                        }, 60000);
+                        if (isNaN(timeremaning.time)) {
+                            console.log("Clicccare")
+                            setTimeout(function() {
+                                location.reload();
+                            }, 120000);
+                        } else {
+                            console.log("mancano " + timeremaning.time + " Minuti");
+                            console.log("mancano 5 minuti o meno");
+                            setTimeout(function() {
+                                location.reload();
+                            }, 60000);
+                        }
                     } else {
                         console.log("mancano " + timeremaning.time + " Minuti");
                         setTimeout(function() {
