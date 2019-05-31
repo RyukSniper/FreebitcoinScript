@@ -4,7 +4,7 @@
 // @author       RyukSniper
 // @match        https://freebitco.in/*
 // @grant        unsafeWindow
-// @version 1.9.2.1
+// @version 1.9.2.2
 // @downloadURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // @updateURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // ==/UserScript==
@@ -74,7 +74,7 @@
                     console.log("orario di lavoro");
                     if (timeremaning.time < 5) {
                         if (isNaN(timeremaning.time)) {
-                            console.log("Clicccare")
+                            console.log("Clicccare");
                             setTimeout(function() {
                                 location.reload();
                             }, 120000);
