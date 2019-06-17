@@ -1,5 +1,5 @@
 // ==UserScript==
-// @NaNe         Freebitco Auto Faucet
+// @name         Freebitco Auto Faucet
 // @description  Auto Faucet Script by RyukSniper
 // @author       RyukSniper
 // @match        https://freebitco.in/*
