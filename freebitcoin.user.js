@@ -14,13 +14,15 @@
 
     var reward = {};
     var timeremaning = {}
+    var balance = $("#balance").text();
     timeremaning.time = parseInt($("#time_remaining").text());
     reward.select = function() {
         reward.points = parseInt($('.user_reward_points').text().replace(',', ""));
+        console.log("Hai" + balance + "BTC");
         console.log("Hai " + reward.points + " punti");
         reward.captcha = parseInt($('.play_without_captcha_description .bold span').text());
         if (isNaN(reward.captcha)) {
-            console.log("Timer attivo o Bonus attivo")
+            console.log("Timer attivo o Bonus Captcha attivo")
         } else {
             console.log("Il costo senza captcha è " + reward.captcha);
         }
@@ -33,6 +35,7 @@
         if (datagiorno > 5 && datagiorno < 7) {
             console.log("WEEK");
             if (isNaN(reward.captcha) && isNaN(timeremaning.time)) {
+                console.log("Bonus Captcha attivo");
                 $("#free_play_form_button").click();
                 setTimeout(function() {
                     location.reload();
@@ -65,6 +68,7 @@
                 if (dataore >= 13 && dataore < 14) {
                     console.log("Orario di pranzo a lavoro");
                     if (isNaN(reward.captcha) && isNaN(timeremaning.time)) {
+                        console.log("Bonus Captcha attivo");
                         $("#free_play_form_button").click();
                         setTimeout(function() {
                             location.reload();
@@ -87,6 +91,7 @@
                 } else {
                     console.log("orario di lavoro");
                     if (isNaN(reward.captcha) && isNaN(timeremaning.time)) {
+                        console.log("Bonus Captcha attivo");
                         $("#free_play_form_button").click();
                         setTimeout(function() {
                             location.reload();
@@ -116,6 +121,7 @@
             } else {
                 console.log("orario di clicking");
                 if (isNaN(reward.captcha) && isNaN(timeremaning.time)) {
+                    console.log("Bonus Captcha attivo");
                     $("#free_play_form_button").click();
                     setTimeout(function() {
                         location.reload();
