@@ -4,7 +4,7 @@
 // @author       RyukSniper
 // @match        https://freebitco.in/*
 // @grant        unsafeWindow
-// @version 1.9.2.9
+// @version 1.9.3
 // @downloadURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // @updateURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // ==/UserScript==
