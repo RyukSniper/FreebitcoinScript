@@ -4,7 +4,7 @@
 // @author       RyukSniper
 // @match        https://freebitco.in/*
 // @grant        unsafeWindow
-// @version 1.9.3.1
+// @version 1.9.3.2
 // @downloadURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // @updateURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // ==/UserScript==
@@ -13,12 +13,27 @@
     'use strict';
 
     var reward = {};
-    var timeremaning = {}
+    var timeremaning = {};
     var balance = $("#balance").text();
+    var bonus = {};
+    bonus.btc = parseInt($("#bonus_container_fp_bonus .free_play_bonus_box_span_large").text());
+    bonus.reward = parseInt($("#bonus_container_free_points .free_play_bonus_box_span_large").text());
     timeremaning.time = parseInt($("#time_remaining").text());
     reward.select = function() {
         reward.points = parseInt($('.user_reward_points').text().replace(',', ""));
         console.log("Hai " + balance + " BTC");
+        if (isNaN(bonus.btc)) {
+            console.log("Nessun Bonus BTC attivo");
+        }
+        else {
+            console.log("Hai un Bonus BTC attivo del "+ bonus.btc " %");
+        }
+        if (isNaN(bonus.reward)) {
+            console.log("Non hai nessun Bonus Reward attivo");
+        }
+        else {
+            console.log("Hai un Bonus Reward attivo e guadagni " + bonus.reward " a roll");
+        }
         console.log("Hai " + reward.points + " punti");
         reward.captcha = parseInt($('.play_without_captcha_description .bold span').text());
         if (isNaN(reward.captcha)) {
