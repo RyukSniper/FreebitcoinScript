@@ -4,7 +4,7 @@
 // @author       RyukSniper
 // @match        https://freebitco.in/*
 // @grant        unsafeWindow
-// @version 1.9.3.3
+// @version 1.9.3.5
 // @downloadURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // @updateURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // ==/UserScript==
@@ -26,13 +26,13 @@
             console.log("Nessun Bonus BTC attivo");
         }
         else {
-            console.log("Hai un Bonus BTC attivo del "+ bonus.btc " %");
+            console.log("Hai un Bonus BTC attivo del " + bonus.btc);
         }
         if (isNaN(bonus.reward)) {
             console.log("Non hai nessun Bonus Reward attivo");
         }
         else {
-            console.log("Hai un Bonus Reward attivo e guadagni " + bonus.reward " a roll");
+            console.log("Hai un Bonus Reward attivo e guadagni " + bonus.reward);
         }
         console.log("Hai " + reward.points + " punti");
         reward.captcha = parseInt($('.play_without_captcha_description .bold span').text());
