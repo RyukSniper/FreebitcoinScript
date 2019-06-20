@@ -4,7 +4,7 @@
 // @author       RyukSniper
 // @match        https://freebitco.in/*
 // @grant        unsafeWindow
-// @version 1.9.3.2
+// @version 1.9.3.3
 // @downloadURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // @updateURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // ==/UserScript==
@@ -13,7 +13,7 @@
     'use strict';
 
     var reward = {};
-    var timeremaning = {};
+    var timeremaning = {}
     var balance = $("#balance").text();
     var bonus = {};
     bonus.btc = parseInt($("#bonus_container_fp_bonus .free_play_bonus_box_span_large").text());
