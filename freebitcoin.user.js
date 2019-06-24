@@ -4,7 +4,7 @@
 // @author       RyukSniper
 // @match        https://freebitco.in/*
 // @grant        unsafeWindow
-// @version 1.9.4
+// @version 1.9.4.1
 // @downloadURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // @updateURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // ==/UserScript==
@@ -38,6 +38,10 @@
         reward.captcha = parseInt($('.play_without_captcha_description .bold span').text());
         if (isNaN(reward.captcha)) {
             console.log("Timer attivo o Bonus Captcha attivo");
+        } else {
+            console.log("Il costo senza captcha è " + reward.captcha);
+        }
+        if (isNaN(reward.captcha) && isNaN(timeremaning.time)) {
             if (reward.points >= 5000) {
                 console.log("I punti reward sono superiori a 5000 prendo i bonus");
                 $('#free_points_rewards .large-3 .reward_link_redeem_button_style:eq(1) ').click();
@@ -46,8 +50,8 @@
                 console.log("I reward sono inferiori a 5000 prendo solo il bonus 100 Reward");
                 $('#free_points_rewards .large-3 .reward_link_redeem_button_style:eq(1) ').click();
             }
-        } else {
-            console.log("Il costo senza captcha è " + reward.captcha);
+        }else{
+            console.log("Non Prendo nessun reward perchè il Timer non è scaduto o non hai il Bonus NoCapcha");
         }
         var myDate = new Date();
         var dataore = (myDate.getHours());
