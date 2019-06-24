@@ -4,14 +4,18 @@
 // @author       RyukSniper
 // @match        https://freebitco.in/*
 // @grant        unsafeWindow
-// @version 1.9.4.2
+// @version 1.9.4.7
 // @downloadURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // @updateURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
+// @require     https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js
+// @grant       GM_xmlhttpRequest
 // ==/UserScript==
 // this is test for auto-update
 (function() {
     'use strict';
-
+    var arrayprice = $.ajax({
+        url: "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=eur"
+    });
     var reward = {};
     var timeremaning = {}
     var balance = $("#balance").text();
@@ -50,8 +54,8 @@
                 console.log("I reward sono inferiori a 5000 prendo solo il bonus 100 Reward");
                 $('#free_points_rewards .large-3 .reward_link_redeem_button_style:eq(1) ').click();
             }
-        }else{
-            console.log("Non Prendo nessun reward perchè il Timer non è scaduto o non hai il Bonus NoCaptcha");
+        } else {
+            console.log("Non prendo nessun Bonus perchè il Timer non è scaduto o non hai il Bonus NoCaptcha");
         }
         var myDate = new Date();
         var dataore = (myDate.getHours());
