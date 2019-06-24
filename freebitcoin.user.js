@@ -4,7 +4,7 @@
 // @author       RyukSniper
 // @match        https://freebitco.in/*
 // @grant        unsafeWindow
-// @version 1.9.4.1
+// @version 1.9.4.2
 // @downloadURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // @updateURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // ==/UserScript==
@@ -51,7 +51,7 @@
                 $('#free_points_rewards .large-3 .reward_link_redeem_button_style:eq(1) ').click();
             }
         }else{
-            console.log("Non Prendo nessun reward perchè il Timer non è scaduto o non hai il Bonus NoCapcha");
+            console.log("Non Prendo nessun reward perchè il Timer non è scaduto o non hai il Bonus NoCaptcha");
         }
         var myDate = new Date();
         var dataore = (myDate.getHours());
