@@ -4,18 +4,22 @@
 // @author       RyukSniper
 // @match        https://freebitco.in/*
 // @grant        unsafeWindow
-// @version 1.9.4.3
+// @version 1.9.4.4
 // @downloadURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // @updateURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // ==/UserScript==
 // this is test for auto-update
 (function() {
     'use strict';
-
+    var arrayprice = $.ajax({
+        url: "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=eur",
+    });
+    var euro = arrayprice["responseJSON"]["bitcoin"]["eur"];
     var reward = {};
     var timeremaning = {}
     var balance = $("#balance").text();
     var bonus = {};
+    var balancecurrenteur = parseFloat((balance * euro)).toFixed(2);
     bonus.btc = parseInt($("#bonus_container_fp_bonus .free_play_bonus_box_span_large").text());
     bonus.reward = parseInt($("#bonus_container_free_points .free_play_bonus_box_span_large").text());
     timeremaning.time = parseInt($("#time_remaining").text());
@@ -24,6 +28,7 @@
     reward.select = function() {
         reward.points = parseInt($('.user_reward_points').text().replace(',', ""));
         console.log("Hai " + balance + " BTC");
+        console.log("Hai " + balancecurrenteur + "€");
         if (isNaN(bonus.btc)) {
             console.log("Nessun Bonus BTC attivo");
         } else {
@@ -50,7 +55,7 @@
                 console.log("I reward sono inferiori a 5000 prendo solo il bonus 100 Reward");
                 $('#free_points_rewards .large-3 .reward_link_redeem_button_style:eq(1) ').click();
             }
-        }else{
+        } else {
             console.log("Non prendo nessun Bonus perchè il Timer non è scaduto o non hai il Bonus NoCaptcha");
         }
         var myDate = new Date();
