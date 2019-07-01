@@ -4,18 +4,15 @@
 // @author       RyukSniper
 // @match        https://freebitco.in/*
 // @grant        unsafeWindow
-// @version 1.9.4.7
+// @version 1.9.4.8
 // @downloadURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // @updateURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
-// @require     https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js
+// @require          https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js
 // @grant       GM_xmlhttpRequest
 // ==/UserScript==
 // this is test for auto-update
 (function() {
     'use strict';
-    var arrayprice = $.ajax({
-        url: "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=eur"
-    });
     var reward = {};
     var timeremaning = {}
     var balance = $("#balance").text();
