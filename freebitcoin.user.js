@@ -25,7 +25,7 @@ var reward = {};
             reward.bonustime.hour = parseInt(reward.bonustime.text.split(":")[0]);
             reward.bonustime.min = parseInt(reward.bonustime.text.split(":")[1]);
             reward.bonustime.sec = parseInt(reward.bonustime.text.split(":")[2]);
-            reward.bonustime.current = reward.bonustime.hour / 3600;
+            reward.bonustime.current = reward.bonustime.hour * 3600 + reward.bonustime.min * 60 + reward.bonustime.sec;
         } else
             reward.bonustime.current = 0;
         console.log(reward.bonustime.current);
