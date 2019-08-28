@@ -4,7 +4,7 @@
 // @author       RyukSniper
 // @match        https://freebitco.in/*
 // @grant        unsafeWindow
-// @version 2.0
+// @version 2.0.1
 // @downloadURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // @updateURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoin.user.js
 // @require          https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js
@@ -50,9 +50,11 @@ var reward = {};
             else {
                 RedeemRPProduct('free_points_100');
             }
-            if ($('#bonus_span_fp_bonus').length === 0)
-                if (reward.points >= 4400)
-                    RedeemRPProduct('fp_bonus_1000');
+        }
+        if ($('#bonus_span_fp_bonus').length === 0){
+          if (reward.points > 4400){
+              RedeemRPProduct('fp_bonus_1000');
+          }
         }
     };
     setTimeout(reward.select,1000);
