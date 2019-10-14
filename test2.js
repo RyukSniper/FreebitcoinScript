@@ -4,7 +4,7 @@
     // @description  Auto claim, auto rewards, auto bonus et martingale
     // @namespace    https://www.facebook.com/Gagner-des-Bitcoins-gratuitement-644979109331593
     // @description  Multiply BTC bot using martingale system with cheap prerolls.
-    // @author       CastorpoluXX
+    // @author       RyukSniper
     // @match        https://freebitco.in/*
     // @match        https://freebitco.in/?op=home
     // @match        https://freebitco.in/?op=home#
@@ -37,8 +37,8 @@ var startValue     = '0.00000001',  //Best not to adjust this value
     stopBefore     = 1,             //In minutes for timer before stopping redirect on webpage
 
 //!!The values below are binary and can only be set to enabled or disabled in lower case letters!!
-    AutoLottery    = 'enabled',     //When enabled the game will buy the set amount of lottery tickets on events
-    AutoBonus      = 'enabled',     //When enabled the game will automatically claim the money in your bonus account
+    AutoLottery    = 'disabled',     //When enabled the game will buy the set amount of lottery tickets on events
+    AutoBonus      = 'disabled',     //When enabled the game will automatically claim the money in your bonus account
     AutoFreeroll   = 'enabled',     //When enabled the game will automatically claim your free hourly satoshi
     AutoRewards    = 'enabled';     //When enabled the game will automatically trade your reward points for extra reward points and 1000% free btc
 
@@ -64,107 +64,107 @@ function Message()
 {
     'use strict';
     var body = $('#reward_points_bonuses_main_div');
-    var CastorpoluXX_class_input = 'background-color:lightblue; border-radius:5px; text-align:right; float:right; margin:0; margin-right:5px; width:110px; font-size:15px; padding:5; height:20px;';
-    var CastorpoluXX_class_caption = 'text-align:left; margin-left:10px;';
-    var CastorpoluXX_class_value = 'background-color:#DEDEDE; border-radius:5px; text-align:right; float:right; margin:0; margin-right:5px; width:110px; font-size:15px; padding:5; padding-right:10px; color:#000; height:23px;';
-    var CastorpoluXX_class_progress = 'overflow:hidden; border-radius:5px; text-align:right; float:right; margin:0; margin-right:5px; width:110px; font-size:15px; color:#000; height:23px;';
-    var CastorpoluXX_class_title = 'text-decoration:underline;text-align:center; font-weight:bold;';
-    var CastorpoluXX_class_widebox = 'padding:5px; border-radius:5px; background-color:#DEDEDE; text-align:left; margin:5px; color:#000; font-size:11px;';
-    var CastorpoluXX_class_disabletable = 'height:0px; padding:5px; border-radius:5px; background-color:#DEDEDE; text-align:left; margin:5px; color:#000; font-size:11px; font-size:10.5px; text-align:center; line-height:20px; visibility: hidden;';
-    var CastorpoluXX_class_toggle = 'border:0px; background-color:#DEDEDE; border-radius:5px; float:right; margin:0; margin-right:5px; width:110px; font-size:15px; padding:5; padding-right:10px; color:#000; height:23px;';
+    var RyukSniper_class_input = 'background-color:lightblue; border-radius:5px; text-align:right; float:right; margin:0; margin-right:5px; width:110px; font-size:15px; padding:5; height:20px;';
+    var RyukSniper_class_caption = 'text-align:left; margin-left:10px;';
+    var RyukSniper_class_value = 'background-color:#DEDEDE; border-radius:5px; text-align:right; float:right; margin:0; margin-right:5px; width:110px; font-size:15px; padding:5; padding-right:10px; color:#000; height:23px;';
+    var RyukSniper_class_progress = 'overflow:hidden; border-radius:5px; text-align:right; float:right; margin:0; margin-right:5px; width:110px; font-size:15px; color:#000; height:23px;';
+    var RyukSniper_class_title = 'text-decoration:underline;text-align:center; font-weight:bold;';
+    var RyukSniper_class_widebox = 'padding:5px; border-radius:5px; background-color:#DEDEDE; text-align:left; margin:5px; color:#000; font-size:11px;';
+    var RyukSniper_class_disabletable = 'height:0px; padding:5px; border-radius:5px; background-color:#DEDEDE; text-align:left; margin:5px; color:#000; font-size:11px; font-size:10.5px; text-align:center; line-height:20px; visibility: hidden;';
+    var RyukSniper_class_toggle = 'border:0px; background-color:#DEDEDE; border-radius:5px; float:right; margin:0; margin-right:5px; width:110px; font-size:15px; padding:5; padding-right:10px; color:#000; height:23px;';
     body.prepend(
     $('<div/>').attr('style',"border:2px solid darkblue; padding:5px; border-radius:5px; margin-bottom:10px;margin-left:auto;margin-right:auto;z.index:999;max-width:600px;background-color:#069;color:white; text-align: left;")
     .append(
         $('<div/>').attr('id','autofaucet')
-        .append($('<p/>').attr('style','text-decoration:underline;text-align:center;').text("Freebitco.in BOT by CastorpoluXX"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_widebox).attr('id','CastorpoluXX_warning').text("**WARNING!** These settings will be applied realtime on editing,  do not change these values if you do not know what you are doing. These settings will will be applied only for the duration of maximum one hour,  if you wish to change them permanently adjust them in the script itself."))
-        .append($('<p/>').attr('style',CastorpoluXX_class_title).text("Settings"))
-        .append($('<p/>').attr('id','CastorpoluXX_toggle_lottery').text("Auto Lottery"))
-        .append($('<p/>').attr('id','CastorpoluXX_toggle_bonus').text("Auto Bonus"))
-        .append($('<p/>').attr('id','CastorpoluXX_toggle_rewards').text("Auto Rewards"))
-        .append($('<p/>').attr('id','CastorpoluXX_toggle_freeroll').text("Auto Freeroll"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption + 'height:55px;').text("Automated processes"))
-        .append($('<input/>').attr('style',CastorpoluXX_class_input).attr('type','text').attr('id','CastorpoluXX_setup_multiplier').attr('value',MultiPlierBase))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).text("Multiplier"))
-        .append($('<input/>').attr('style',CastorpoluXX_class_input).attr('type','text').attr('id','CastorpoluXX_setup_odds').attr('value',Odds))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).text("Odds"))
-        .append($('<input/>').attr('style',CastorpoluXX_class_input).attr('type','text').attr('id','CastorpoluXX_setup_prerolls').attr('value',preRolls))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).attr('id','CastorpoluXX_caption_prerolls').text("Pre rolls"))
-        .append($('<input/>').attr('style',CastorpoluXX_class_toggle).attr('id','CastorpoluXX_setup_safetyrun').attr('type','range').attr('value',safetyRun).attr('min','0').attr('max',preRolls))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).attr('id','CastorpoluXX_display_safetyrun').text("Safety run adds [" + safetyRun + "] rolls to pre rolls until max loss reached"))
-        .append($('<input/>').attr('style',CastorpoluXX_class_toggle).attr('id','CastorpoluXX_setup_safetyoverride').attr('type','range').attr('value',safetyOverride).attr('min',stopBefore).attr('max','60'))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).attr('id','CastorpoluXX_display_safetyoverride').text("Safety run ends [" + safetyOverride + "] minutes before autorefresh"))
-        .append($('<input/>').attr('style',CastorpoluXX_class_input).attr('type','text').attr('id','CastorpoluXX_setup_basebet').attr('value',baseBet))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).text("Start bet"))
-        .append($('<input/>').attr('style',CastorpoluXX_class_input).attr('type','text').attr('id','CastorpoluXX_setup_handbrake').attr('value',HandBrake))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).text("Maximum bet"))
-        .append($('<input/>').attr('style',CastorpoluXX_class_input).attr('type','text').attr('id','CastorpoluXX_setup_bonus').attr('value',ClaimBonus))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).text("Claim bonus"))
-        .append($('<input/>').attr('style',CastorpoluXX_class_input).attr('type','text').attr('id','CastorpoluXX_setup_lotteryonwin').attr('value',LotteryOnWin))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).text("Buy lotery tickets on win"))
-        .append($('<input/>').attr('style',CastorpoluXX_class_input).attr('type','text').attr('id','CastorpoluXX_setup_lotterysession').attr('value',LotterySession))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).text("Buy lotery tickets at end of each session"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_value).attr('id','CastorpoluXX_max_bets').text(""))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).attr('id','CastorpoluXX_caption_maxrolls').text("Safe run ends after"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_value).attr('id','CastorpoluXX_bet_break').text(""))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).attr('id','CastorpoluXX_caption_breakbet').text("Max loss"))
-        .append($('<input/>').attr('style',CastorpoluXX_class_toggle).attr('id','CastorpoluXX_setup_autostop').attr('type','range').attr('value',stopBefore).attr('min','1').attr('max','60'))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).attr('id','CastorpoluXX_display_autostop').text("Autostop " + stopBefore + " minutes before autorefresh"))
-        .append($('<input/>').attr('style',CastorpoluXX_class_toggle).attr('id','CastorpoluXX_setup_playpause').attr('type','button').attr('value','Pause game'))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).text("Pause / run game"))
-        .append($('<input/>').attr('style',CastorpoluXX_class_toggle).attr('id','CastorpoluXX_setup_displaytable').attr('type','button').attr('value','Enable'))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).text("Display betting table"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_disabletable).attr('id','CastorpoluXX_propagate_lines').text(""))
-        .append($('<p/>').attr('style',CastorpoluXX_class_title).text("Balance"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_value).attr('id','CastorpoluXX_total_currency').text("/"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).text("Total balance in currency"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_value).attr('id','CastorpoluXX_total_balance').text("/"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).text("Total balance"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_value).attr('id','CastorpoluXX_main_balance').text("/"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).text("Main balance"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_value).attr('id','CastorpoluXX_bonus_account_balance').text("/"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).text("Bonus account balance"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_value).attr('id','CastorpoluXX_bonus_account_wager').text("/"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).text("Bonus account wager"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_value).attr('id','CastorpoluXX_bonus_account_builder').text("/"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).text("Bonus account eligable"))
-        .append($('<progress/>').attr('style',CastorpoluXX_class_progress).attr('id','CastorpoluXX_bonus_account_progress').attr('max','').attr('value',''))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).text("Bonus account progress"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_value).attr('id','CastorpoluXX_reward_points').text("/"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).text("Reward points"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_value).attr('id','CastorpoluXX_lottery_tickets').text("/"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).text("Lottery tickets"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_disabletable).attr('id','CastorpoluXX_propagate_lines').text(""))
-        .append($('<p/>').attr('style',CastorpoluXX_class_title).text("Current bet"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_value).attr('id','CastorpoluXX_current_win').text(baseBet))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).attr('id','CastorpoluXX_current_winlose').text("Win/Lose"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_value).attr('id','CastorpoluXX_current_bet').text(baseBet))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).text("You bet"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_value).attr('id','CastorpoluXX_current_preroll').text("0/"+preRolls))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).text("Preroll"))
-        .append($('<progress/>').attr('style',CastorpoluXX_class_progress).attr('id','CastorpoluXX_display_preroll').attr('max','').attr('value',''))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).text("Progress current/prerolls"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_value).attr('id','CastorpoluXX_current_action').text("none"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).text("Action"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_disabletable).attr('id','CastorpoluXX_propagate_lines').text(""))
-        .append($('<p/>').attr('style',CastorpoluXX_class_title).text("Session"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_value).attr('id','CastorpoluXX_this_session').text(baseBet))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).text("Session balance"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_value).attr('id','CastorpoluXX_biggest_bet').text(baseBet))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).text("Biggest bet"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_value).attr('id','CastorpoluXX_biggest_win').text(baseBet))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).text("Biggest win"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_value).attr('id','CastorpoluXX_longest_lose').text(0))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).text("Longest losing streak"))
-        .append($('<progress/>').attr('style',CastorpoluXX_class_progress).attr('id','CastorpoluXX_display_safety').attr('max','').attr('value',''))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).attr('id','CastorpoluXX_text_safety').text("Safety longest losing streak/max loss"))
-        .append($('<progress/>').attr('style',CastorpoluXX_class_progress).attr('id','CastorpoluXX_display_safetyoverrun').attr('max','').attr('value',''))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).attr('id','CastorpoluXX_text_safetyoverrun').text("Safety longest losing streak/max loss"))
-        .append($('<progress/>').attr('style',CastorpoluXX_class_progress).attr('id','CastorpoluXX_session_progress').attr('min','1').attr('max','60').attr('value',''))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).attr('id','CastorpoluXX_session_display').text("Session progress"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_caption).attr('id','CastorpoluXX_stop_bet').text(""))
-        .append($('<p/>').attr('style',CastorpoluXX_class_widebox).text("Come Join to our Big Family register at https://freebitco.in/?r=11201638"))
-        .append($('<p/>').attr('style',CastorpoluXX_class_widebox).text("Or if this script help your financial, please donate us at  ''1WQsj2sN1eN6rH2eoz1CXdK42uTRj52AA''"))
+        .append($('<p/>').attr('style','text-decoration:underline;text-align:center;').text("Freebitco.in BOT by RyukSniper"))
+        .append($('<p/>').attr('style',RyukSniper_class_widebox).attr('id','RyukSniper_warning').text("**WARNING!** These settings will be applied realtime on editing,  do not change these values if you do not know what you are doing. These settings will will be applied only for the duration of maximum one hour,  if you wish to change them permanently adjust them in the script itself."))
+        .append($('<p/>').attr('style',RyukSniper_class_title).text("Settings"))
+        .append($('<p/>').attr('id','RyukSniper_toggle_lottery').text("Auto Lottery"))
+        .append($('<p/>').attr('id','RyukSniper_toggle_bonus').text("Auto Bonus"))
+        .append($('<p/>').attr('id','RyukSniper_toggle_rewards').text("Auto Rewards"))
+        .append($('<p/>').attr('id','RyukSniper_toggle_freeroll').text("Auto Freeroll"))
+        .append($('<p/>').attr('style',RyukSniper_class_caption + 'height:55px;').text("Automated processes"))
+        .append($('<input/>').attr('style',RyukSniper_class_input).attr('type','text').attr('id','RyukSniper_setup_multiplier').attr('value',MultiPlierBase))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).text("Multiplier"))
+        .append($('<input/>').attr('style',RyukSniper_class_input).attr('type','text').attr('id','RyukSniper_setup_odds').attr('value',Odds))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).text("Odds"))
+        .append($('<input/>').attr('style',RyukSniper_class_input).attr('type','text').attr('id','RyukSniper_setup_prerolls').attr('value',preRolls))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).attr('id','RyukSniper_caption_prerolls').text("Pre rolls"))
+        .append($('<input/>').attr('style',RyukSniper_class_toggle).attr('id','RyukSniper_setup_safetyrun').attr('type','range').attr('value',safetyRun).attr('min','0').attr('max',preRolls))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).attr('id','RyukSniper_display_safetyrun').text("Safety run adds [" + safetyRun + "] rolls to pre rolls until max loss reached"))
+        .append($('<input/>').attr('style',RyukSniper_class_toggle).attr('id','RyukSniper_setup_safetyoverride').attr('type','range').attr('value',safetyOverride).attr('min',stopBefore).attr('max','60'))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).attr('id','RyukSniper_display_safetyoverride').text("Safety run ends [" + safetyOverride + "] minutes before autorefresh"))
+        .append($('<input/>').attr('style',RyukSniper_class_input).attr('type','text').attr('id','RyukSniper_setup_basebet').attr('value',baseBet))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).text("Start bet"))
+        .append($('<input/>').attr('style',RyukSniper_class_input).attr('type','text').attr('id','RyukSniper_setup_handbrake').attr('value',HandBrake))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).text("Maximum bet"))
+        .append($('<input/>').attr('style',RyukSniper_class_input).attr('type','text').attr('id','RyukSniper_setup_bonus').attr('value',ClaimBonus))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).text("Claim bonus"))
+        .append($('<input/>').attr('style',RyukSniper_class_input).attr('type','text').attr('id','RyukSniper_setup_lotteryonwin').attr('value',LotteryOnWin))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).text("Buy lotery tickets on win"))
+        .append($('<input/>').attr('style',RyukSniper_class_input).attr('type','text').attr('id','RyukSniper_setup_lotterysession').attr('value',LotterySession))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).text("Buy lotery tickets at end of each session"))
+        .append($('<p/>').attr('style',RyukSniper_class_value).attr('id','RyukSniper_max_bets').text(""))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).attr('id','RyukSniper_caption_maxrolls').text("Safe run ends after"))
+        .append($('<p/>').attr('style',RyukSniper_class_value).attr('id','RyukSniper_bet_break').text(""))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).attr('id','RyukSniper_caption_breakbet').text("Max loss"))
+        .append($('<input/>').attr('style',RyukSniper_class_toggle).attr('id','RyukSniper_setup_autostop').attr('type','range').attr('value',stopBefore).attr('min','1').attr('max','60'))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).attr('id','RyukSniper_display_autostop').text("Autostop " + stopBefore + " minutes before autorefresh"))
+        .append($('<input/>').attr('style',RyukSniper_class_toggle).attr('id','RyukSniper_setup_playpause').attr('type','button').attr('value','Pause game'))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).text("Pause / run game"))
+        .append($('<input/>').attr('style',RyukSniper_class_toggle).attr('id','RyukSniper_setup_displaytable').attr('type','button').attr('value','Enable'))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).text("Display betting table"))
+        .append($('<p/>').attr('style',RyukSniper_class_disabletable).attr('id','RyukSniper_propagate_lines').text(""))
+        .append($('<p/>').attr('style',RyukSniper_class_title).text("Balance"))
+        .append($('<p/>').attr('style',RyukSniper_class_value).attr('id','RyukSniper_total_currency').text("/"))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).text("Total balance in currency"))
+        .append($('<p/>').attr('style',RyukSniper_class_value).attr('id','RyukSniper_total_balance').text("/"))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).text("Total balance"))
+        .append($('<p/>').attr('style',RyukSniper_class_value).attr('id','RyukSniper_main_balance').text("/"))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).text("Main balance"))
+        .append($('<p/>').attr('style',RyukSniper_class_value).attr('id','RyukSniper_bonus_account_balance').text("/"))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).text("Bonus account balance"))
+        .append($('<p/>').attr('style',RyukSniper_class_value).attr('id','RyukSniper_bonus_account_wager').text("/"))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).text("Bonus account wager"))
+        .append($('<p/>').attr('style',RyukSniper_class_value).attr('id','RyukSniper_bonus_account_builder').text("/"))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).text("Bonus account eligable"))
+        .append($('<progress/>').attr('style',RyukSniper_class_progress).attr('id','RyukSniper_bonus_account_progress').attr('max','').attr('value',''))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).text("Bonus account progress"))
+        .append($('<p/>').attr('style',RyukSniper_class_value).attr('id','RyukSniper_reward_points').text("/"))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).text("Reward points"))
+        .append($('<p/>').attr('style',RyukSniper_class_value).attr('id','RyukSniper_lottery_tickets').text("/"))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).text("Lottery tickets"))
+        .append($('<p/>').attr('style',RyukSniper_class_disabletable).attr('id','RyukSniper_propagate_lines').text(""))
+        .append($('<p/>').attr('style',RyukSniper_class_title).text("Current bet"))
+        .append($('<p/>').attr('style',RyukSniper_class_value).attr('id','RyukSniper_current_win').text(baseBet))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).attr('id','RyukSniper_current_winlose').text("Win/Lose"))
+        .append($('<p/>').attr('style',RyukSniper_class_value).attr('id','RyukSniper_current_bet').text(baseBet))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).text("You bet"))
+        .append($('<p/>').attr('style',RyukSniper_class_value).attr('id','RyukSniper_current_preroll').text("0/"+preRolls))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).text("Preroll"))
+        .append($('<progress/>').attr('style',RyukSniper_class_progress).attr('id','RyukSniper_display_preroll').attr('max','').attr('value',''))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).text("Progress current/prerolls"))
+        .append($('<p/>').attr('style',RyukSniper_class_value).attr('id','RyukSniper_current_action').text("none"))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).text("Action"))
+        .append($('<p/>').attr('style',RyukSniper_class_disabletable).attr('id','RyukSniper_propagate_lines').text(""))
+        .append($('<p/>').attr('style',RyukSniper_class_title).text("Session"))
+        .append($('<p/>').attr('style',RyukSniper_class_value).attr('id','RyukSniper_this_session').text(baseBet))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).text("Session balance"))
+        .append($('<p/>').attr('style',RyukSniper_class_value).attr('id','RyukSniper_biggest_bet').text(baseBet))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).text("Biggest bet"))
+        .append($('<p/>').attr('style',RyukSniper_class_value).attr('id','RyukSniper_biggest_win').text(baseBet))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).text("Biggest win"))
+        .append($('<p/>').attr('style',RyukSniper_class_value).attr('id','RyukSniper_longest_lose').text(0))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).text("Longest losing streak"))
+        .append($('<progress/>').attr('style',RyukSniper_class_progress).attr('id','RyukSniper_display_safety').attr('max','').attr('value',''))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).attr('id','RyukSniper_text_safety').text("Safety longest losing streak/max loss"))
+        .append($('<progress/>').attr('style',RyukSniper_class_progress).attr('id','RyukSniper_display_safetyoverrun').attr('max','').attr('value',''))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).attr('id','RyukSniper_text_safetyoverrun').text("Safety longest losing streak/max loss"))
+        .append($('<progress/>').attr('style',RyukSniper_class_progress).attr('id','RyukSniper_session_progress').attr('min','1').attr('max','60').attr('value',''))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).attr('id','RyukSniper_session_display').text("Session progress"))
+        .append($('<p/>').attr('style',RyukSniper_class_caption).attr('id','RyukSniper_stop_bet').text(""))
+        .append($('<p/>').attr('style',RyukSniper_class_widebox).text("Come Join to our Big Family register at https://freebitco.in/?r=11201638"))
+        .append($('<p/>').attr('style',RyukSniper_class_widebox).text("Or if this script help your financial, please donate us at  ''1WQsj2sN1eN6rH2eoz1CXdK42uTRj52AA''"))
         .append($('<p/>')
                 )
         )
@@ -174,35 +174,35 @@ function Message()
     window.onload = function() { setTimeout(function() { startGame();1000})};
 function toggleFeatures(toggleId, toggleName, toggleOnOff)
 {
-    var CastorpoluXX_class_enabled = 'background-color:lightgreen; border-radius:5px; text-align:right; float:right; margin:0; width:110px; font-size:15px; padding:5; margin-right:5px; color:Green; height:50px; text-align:center;';
-    var CastorpoluXX_class_disabled = 'background-color:pink; border-radius:5px; text-align:right; float:right; margin:0; width:110px; font-size:15px; padding:5; margin-right:5px; color:red; height:50px; text-align:center;';
+    var RyukSniper_class_enabled = 'background-color:lightgreen; border-radius:5px; text-align:right; float:right; margin:0; width:110px; font-size:15px; padding:5; margin-right:5px; color:Green; height:50px; text-align:center;';
+    var RyukSniper_class_disabled = 'background-color:pink; border-radius:5px; text-align:right; float:right; margin:0; width:110px; font-size:15px; padding:5; margin-right:5px; color:red; height:50px; text-align:center;';
     if(toggleOnOff=='enabled')
     {
-        $(toggleId).attr('style',CastorpoluXX_class_enabled + '').text(toggleName + ' ' + toggleOnOff);
+        $(toggleId).attr('style',RyukSniper_class_enabled + '').text(toggleName + ' ' + toggleOnOff);
     }
     else
     {
-        $(toggleId).attr('style',CastorpoluXX_class_disabled + '').text(toggleName + ' ' + toggleOnOff);
+        $(toggleId).attr('style',RyukSniper_class_disabled + '').text(toggleName + ' ' + toggleOnOff);
     }
 }
 function calculaterounds()
 {
     var RoundsBalance = parseFloat($('#balance').text()).toFixed(8);
     var CurrentBalance = parseFloat($('#balance').text()).toFixed(8);
-    var CurrentHandbrake = parseFloat($('#CastorpoluXX_setup_handbrake').val()).toFixed(8);
-    var endTableAt= parseInt($('#CastorpoluXX_max_bets').text());
-    var HighestLoss= parseInt($('#CastorpoluXX_longest_lose').text());
-    var SafetyExtend= parseInt($('#CastorpoluXX_setup_safetyrun').val());
-    var SafetyOverride= parseInt($('#CastorpoluXX_setup_safetyoverride').val());
+    var CurrentHandbrake = parseFloat($('#RyukSniper_setup_handbrake').val()).toFixed(8);
+    var endTableAt= parseInt($('#RyukSniper_max_bets').text());
+    var HighestLoss= parseInt($('#RyukSniper_longest_lose').text());
+    var SafetyExtend= parseInt($('#RyukSniper_setup_safetyrun').val());
+    var SafetyOverride= parseInt($('#RyukSniper_setup_safetyoverride').val());
     var RoundsCurrentRound=preRolls;
     var CurrentMinute = parseInt($('title').text());
     if(SafetyOverride > CurrentMinute)
     {
         SafetyExtend=0;
         RoundsCurrentRound=preRolls;
-        $('#CastorpoluXX_caption_prerolls').text('Pre rolls [' + preRolls + ']');
-        $('#CastorpoluXX_caption_breakbet').text('Max loss [Safety run ended]');
-        $('#CastorpoluXX_bet_break').attr('style','background-color:pink; border-radius:5px; text-align:right; float:right; margin:0; margin-right:5px; width:110px; font-size:15px; padding:5; padding-right:10px; color:red; height:23px;');
+        $('#RyukSniper_caption_prerolls').text('Pre rolls [' + preRolls + ']');
+        $('#RyukSniper_caption_breakbet').text('Max loss [Safety run ended]');
+        $('#RyukSniper_bet_break').attr('style','background-color:pink; border-radius:5px; text-align:right; float:right; margin:0; margin-right:5px; width:110px; font-size:15px; padding:5; padding-right:10px; color:red; height:23px;');
     }
     else
     {
@@ -210,20 +210,20 @@ function calculaterounds()
         {
             endTableAt=endTableAt+SafetyExtend;
             RoundsCurrentRound=RoundsCurrentRound+SafetyExtend;
-            $('#CastorpoluXX_caption_prerolls').text('Pre rolls [' + RoundsCurrentRound + ']');
-            $('#CastorpoluXX_caption_breakbet').text('Max loss [Safety run active]');
-            $('#CastorpoluXX_bet_break').attr('style','background-color:lightgreen; border-radius:5px; text-align:right; float:right; margin:0; margin-right:5px; width:110px; font-size:15px; padding:5; padding-right:10px; color:green; height:23px;');
+            $('#RyukSniper_caption_prerolls').text('Pre rolls [' + RoundsCurrentRound + ']');
+            $('#RyukSniper_caption_breakbet').text('Max loss [Safety run active]');
+            $('#RyukSniper_bet_break').attr('style','background-color:lightgreen; border-radius:5px; text-align:right; float:right; margin:0; margin-right:5px; width:110px; font-size:15px; padding:5; padding-right:10px; color:green; height:23px;');
         }
         if(HighestLoss >= endTableAt)
         {
             SafetyExtend=0;
-            $('#CastorpoluXX_caption_prerolls').text('Pre rolls [' + preRolls + ']');
-            $('#CastorpoluXX_caption_breakbet').text('Max loss [Safety run ended]');
-            $('#CastorpoluXX_bet_break').attr('style','background-color:pink; border-radius:5px; text-align:right; float:right; margin:0; margin-right:5px; width:110px; font-size:15px; padding:5; padding-right:10px; color:red; height:23px;');
+            $('#RyukSniper_caption_prerolls').text('Pre rolls [' + preRolls + ']');
+            $('#RyukSniper_caption_breakbet').text('Max loss [Safety run ended]');
+            $('#RyukSniper_bet_break').attr('style','background-color:pink; border-radius:5px; text-align:right; float:right; margin:0; margin-right:5px; width:110px; font-size:15px; padding:5; padding-right:10px; color:red; height:23px;');
         }
     }
-        $('#CastorpoluXX_caption_maxrolls').text('End safety run @');
-        $('#CastorpoluXX_bet_break').text(endTableAt);
+        $('#RyukSniper_caption_maxrolls').text('End safety run @');
+        $('#RyukSniper_bet_break').text(endTableAt);
     RoundsCurrentRound=RoundsCurrentRound-1;
     if(CurrentHandbrake < RoundsBalance)
     {
@@ -234,7 +234,7 @@ function calculaterounds()
     var RoundsCurrentEarn=0;
     var RoundsCurrentWin=(RoundsCurrentBet*Odds).toFixed(8);
     var propagatelines='';
-    var multiplytable = parseFloat($('#CastorpoluXX_setup_multiplier').val()).toFixed(2);
+    var multiplytable = parseFloat($('#RyukSniper_setup_multiplier').val()).toFixed(2);
     RoundsCurrentRound=RoundsCurrentRound+1;
     RoundsBalance = (RoundsBalance-RoundsCurrentBet).toFixed(8);
     RoundsCurrentWin=(RoundsCurrentBet*Odds).toFixed(8);
@@ -265,21 +265,21 @@ function calculaterounds()
         }
     }
         RoundsCurrentRound=RoundsCurrentRound-1-SafetyExtend;
-        $('#CastorpoluXX_max_bets').text(RoundsCurrentRound);
-        $('#CastorpoluXX_propagate_lines').text(propagatelines);
-        $('#CastorpoluXX_display_safety').attr('max',RoundsCurrentRound);
+        $('#RyukSniper_max_bets').text(RoundsCurrentRound);
+        $('#RyukSniper_propagate_lines').text(propagatelines);
+        $('#RyukSniper_display_safety').attr('max',RoundsCurrentRound);
 }
 
 function AutoClaimBonus()
 {
-    ClaimBonus = parseFloat($('#CastorpoluXX_setup_bonus').val()).toFixed(8);
+    ClaimBonus = parseFloat($('#RyukSniper_setup_bonus').val()).toFixed(8);
     var DisplayClaimBonus=ClaimBonus*100000000;
     var DisplayLeaveBonus=LeaveBonus*100000000;
     var DisplayBonusTarget=parseInt(DisplayClaimBonus+DisplayLeaveBonus);
-    $('#CastorpoluXX_bonus_account_progress').attr('max',DisplayClaimBonus);
+    $('#RyukSniper_bonus_account_progress').attr('max',DisplayClaimBonus);
     var bonusbuild=parseFloat($('.dep_bonus_max').text().slice(0, 10)).toFixed(8);
     var Displaybonusbuild=bonusbuild*100000000;
-    $('#CastorpoluXX_bonus_account_progress').val(Displaybonusbuild);
+    $('#RyukSniper_bonus_account_progress').val(Displaybonusbuild);
     if(Displaybonusbuild >= DisplayBonusTarget)
     {
         setTimeout(function()
@@ -313,29 +313,29 @@ function BuyLotteryTickets(BuyTicketAmout)
 }
 function toggleTable(toggleTable)
 {
-    var CastorpoluXX_class_enabletable = 'padding:5px; border-radius:5px; background-color:#DEDEDE; text-align:left; margin:5px; color:#000; font-size:11px; font-size:10.5px; text-align:center; line-height:20px; visibility: visible;';
-    var CastorpoluXX_class_disabletable = 'height:0px; padding:5px; border-radius:5px; background-color:#DEDEDE; text-align:left; margin:5px; color:#000; font-size:11px; font-size:10.5px; text-align:center; line-height:20px; visibility: hidden;';
+    var RyukSniper_class_enabletable = 'padding:5px; border-radius:5px; background-color:#DEDEDE; text-align:left; margin:5px; color:#000; font-size:11px; font-size:10.5px; text-align:center; line-height:20px; visibility: visible;';
+    var RyukSniper_class_disabletable = 'height:0px; padding:5px; border-radius:5px; background-color:#DEDEDE; text-align:left; margin:5px; color:#000; font-size:11px; font-size:10.5px; text-align:center; line-height:20px; visibility: hidden;';
     if(toggleTable==("Enable"))
     {
-        $('#CastorpoluXX_setup_displaytable').val("Disable");
-        $('#CastorpoluXX_propagate_lines').attr('style',CastorpoluXX_class_enabletable);
+        $('#RyukSniper_setup_displaytable').val("Disable");
+        $('#RyukSniper_propagate_lines').attr('style',RyukSniper_class_enabletable);
     }
     if(toggleTable==("Disable"))
     {
-        $('#CastorpoluXX_setup_displaytable').val("Enable");
-        $('#CastorpoluXX_propagate_lines').attr('style',CastorpoluXX_class_disabletable);
+        $('#RyukSniper_setup_displaytable').val("Enable");
+        $('#RyukSniper_propagate_lines').attr('style',RyukSniper_class_disabletable);
     }
 }
 function pauseGame(pauseGame)
 {
     if(pauseGame==("Pause game"))
     {
-        $('#CastorpoluXX_setup_playpause').val("Run game");
+        $('#RyukSniper_setup_playpause').val("Run game");
         stopBeforeRedirect();
     }
     if(pauseGame==("Run game"))
     {
-        $('#CastorpoluXX_setup_playpause').val("Pause game");
+        $('#RyukSniper_setup_playpause').val("Pause game");
         stopped = false;
         startGame();
     }
@@ -356,9 +356,9 @@ function Rewards()
         }
         else
             rewardbonustime.current = 0;
-        $('#CastorpoluXX_reward_points').text(reward);
-        lotteryTickets=parseInt($('#user_lottery_tickets').text().replace(',',""));
-        $('#CastorpoluXX_lottery_tickets').text(lotteryTickets);
+            $('#RyukSniper_reward_points').text(reward);
+            lotteryTickets=parseInt($('#user_lottery_tickets').text().replace(',',""));
+            $('#RyukSniper_lottery_tickets').text(lotteryTickets);
 
        if (rewardbonustime.current !== 0) {
         } else {
@@ -414,8 +414,8 @@ function roundnumb()
     {
         maxRolls = round;
     }
-    var maxBetStop = parseInt($('#CastorpoluXX_max_bets').text());
-    var safetyOverride = parseInt($('#CastorpoluXX_setup_safetyoverride').val());
+    var maxBetStop = parseInt($('#RyukSniper_max_bets').text());
+    var safetyOverride = parseInt($('#RyukSniper_setup_safetyoverride').val());
     var CurrentMinute = parseInt($('title').text());
     if(safetyOverride < CurrentMinute)
     {
@@ -427,25 +427,25 @@ function roundnumb()
     if (round == preRolls)
     {
     $('#double_your_btc_stake').val(baseBet);
-    $('#CastorpoluXX_current_action').text("Start betting");
+    $('#RyukSniper_current_action').text("Start betting");
     }
     if (round > preRolls)
     {
-    MultiPlierBaseSet=parseFloat($('#CastorpoluXX_setup_multiplier').val()).toFixed(2);
-    $('#CastorpoluXX_current_action').text("Increase bet");
+    MultiPlierBaseSet=parseFloat($('#RyukSniper_setup_multiplier').val()).toFixed(2);
+    $('#RyukSniper_current_action').text("Increase bet");
     }
     if (round < preRolls)
     {
     $('#double_your_btc_stake').val(startValue);
     MultiPlierBaseSet = 1.00;
-    $('#CastorpoluXX_current_action').text("None");
+    $('#RyukSniper_current_action').text("None");
     }
 
-    $('#CastorpoluXX_longest_lose').text(maxRolls);
-    $('#CastorpoluXX_current_preroll').text(round + '/' + preRolls);
-    $('#CastorpoluXX_display_preroll').attr('max',preRolls);
-    $('#CastorpoluXX_display_preroll').val(round);
-    $('#CastorpoluXX_display_safety').val(maxRolls);
+    $('#RyukSniper_longest_lose').text(maxRolls);
+    $('#RyukSniper_current_preroll').text(round + '/' + preRolls);
+    $('#RyukSniper_display_preroll').attr('max',preRolls);
+    $('#RyukSniper_display_preroll').val(round);
+    $('#RyukSniper_display_safety').val(maxRolls);
 
     updateGUI();
     calculaterounds();
@@ -458,63 +458,63 @@ function updateGUI()
     var BonusWager = $('#bonus_account_wager').text().replace('BTC',"");
     BonusWager = parseFloat($('#bonus_account_wager').text()).toFixed(8);
     var BalanceUpdate = parseFloat($('#balance').text()).toFixed(8);
-    $('#CastorpoluXX_bonus_account_balance').text(BonusBalance);
-    $('#CastorpoluXX_bonus_account_wager').text(BonusWager);
+    $('#RyukSniper_bonus_account_balance').text(BonusBalance);
+    $('#RyukSniper_bonus_account_wager').text(BonusWager);
     var bonusbalancemath=BonusBalance*100000000;
     var totalbalancemath=BalanceUpdate*100000000;
     var BalanceTotal=bonusbalancemath+totalbalancemath;
     BalanceTotal=(BalanceTotal/100000000).toFixed(8);
-    $('#CastorpoluXX_main_balance').text(BalanceUpdate);
-    $('#CastorpoluXX_total_balance').text(BalanceTotal);
+    $('#RyukSniper_main_balance').text(BalanceUpdate);
+    $('#RyukSniper_total_balance').text(BalanceTotal);
     var BalanceCurrency=parseFloat((BalanceTotal*BTCPrice)).toFixed(2);
-    $('#CastorpoluXX_total_currency').text(Currency + " " + BalanceCurrency);
-    Odds=parseFloat($('#CastorpoluXX_setup_odds').val()).toFixed(2);
-    preRolls=parseInt($('#CastorpoluXX_setup_prerolls').val());
-    baseBet=parseFloat($('#CastorpoluXX_setup_basebet').val()).toFixed(8);
+    $('#RyukSniper_total_currency').text(Currency + " " + BalanceCurrency);
+    Odds=parseFloat($('#RyukSniper_setup_odds').val()).toFixed(2);
+    preRolls=parseInt($('#RyukSniper_setup_prerolls').val());
+    baseBet=parseFloat($('#RyukSniper_setup_basebet').val()).toFixed(8);
     var bonusbuild=parseFloat($('.dep_bonus_max').text().slice(0, 10)).toFixed(8);
-    $('#CastorpoluXX_bonus_account_builder').text(bonusbuild);
-    stopBefore = parseInt($('#CastorpoluXX_setup_autostop').val());
-    $('#CastorpoluXX_display_autostop').text("Autostop [" + stopBefore + "] minutes before autorefresh");
-    safetyRun = parseInt($('#CastorpoluXX_setup_safetyrun').val());
-    $('#CastorpoluXX_display_safetyrun').text("Safety run adds [" + safetyRun + "] to preroll until safetybar filled");
-    safetyOverride = parseInt($('#CastorpoluXX_setup_safetyoverride').val());
-    $('#CastorpoluXX_display_safetyoverride').text("Safety run ends [" + safetyOverride + "] minutes before autorefresh");
-    document.getElementById('CastorpoluXX_setup_displaytable').onclick=function(){toggleTable($('#CastorpoluXX_setup_displaytable').val());};
-    document.getElementById('CastorpoluXX_setup_playpause').onclick=function(){pauseGame($('#CastorpoluXX_setup_playpause').val());};
+    $('#RyukSniper_bonus_account_builder').text(bonusbuild);
+    stopBefore = parseInt($('#RyukSniper_setup_autostop').val());
+    $('#RyukSniper_display_autostop').text("Autostop [" + stopBefore + "] minutes before autorefresh");
+    safetyRun = parseInt($('#RyukSniper_setup_safetyrun').val());
+    $('#RyukSniper_display_safetyrun').text("Safety run adds [" + safetyRun + "] to preroll until safetybar filled");
+    safetyOverride = parseInt($('#RyukSniper_setup_safetyoverride').val());
+    $('#RyukSniper_display_safetyoverride').text("Safety run ends [" + safetyOverride + "] minutes before autorefresh");
+    document.getElementById('RyukSniper_setup_displaytable').onclick=function(){toggleTable($('#RyukSniper_setup_displaytable').val());};
+    document.getElementById('RyukSniper_setup_playpause').onclick=function(){pauseGame($('#RyukSniper_setup_playpause').val());};
     var GameTime = 60-stopBefore;
     var GameEnds = 60-CurrentMinute;
     var SafetyEnds=60-safetyOverride;
-    $('#CastorpoluXX_session_progress').attr('value',GameEnds);
-    $('#CastorpoluXX_session_progress').attr('max',GameTime);
-    $('#CastorpoluXX_display_safetyoverrun').attr('value',GameEnds);
-    $('#CastorpoluXX_display_safetyoverrun').attr('max',SafetyEnds);
-    var LoterySession = parseFloat($('#CastorpoluXX_setup_lotterysession').val()).toFixed(8);
-    var maxBetStop = parseInt($('#CastorpoluXX_max_bets').text());
+    $('#RyukSniper_session_progress').attr('value',GameEnds);
+    $('#RyukSniper_session_progress').attr('max',GameTime);
+    $('#RyukSniper_display_safetyoverrun').attr('value',GameEnds);
+    $('#RyukSniper_display_safetyoverrun').attr('max',SafetyEnds);
+    var LoterySession = parseFloat($('#RyukSniper_setup_lotterysession').val()).toFixed(8);
+    var maxBetStop = parseInt($('#RyukSniper_max_bets').text());
     if (GameEnds >= GameTime)
     {
-        $('#CastorpoluXX_session_display').text('Session ended');
+        $('#RyukSniper_session_display').text('Session ended');
     }
     else
     {
-        $('#CastorpoluXX_session_display').text('Session progress [' + GameEnds + '] / [' + GameTime + '] minutes');
+        $('#RyukSniper_session_display').text('Session progress [' + GameEnds + '] / [' + GameTime + '] minutes');
     }
         if (maxRolls >= maxBetStop)
     {
-        $('#CastorpoluXX_text_safety').text('Safety bar filled, safety run ended');
-        $('#CastorpoluXX_text_safetyoverrun').text('Safety bar filled, safety run ended');
+        $('#RyukSniper_text_safety').text('Safety bar filled, safety run ended');
+        $('#RyukSniper_text_safetyoverrun').text('Safety bar filled, safety run ended');
     }
     else
     {
-        $('#CastorpoluXX_text_safety').text('Safety bar losing streak [' + maxRolls + '] / [' + maxBetStop + ']');
+        $('#RyukSniper_text_safety').text('Safety bar losing streak [' + maxRolls + '] / [' + maxBetStop + ']');
     }
     if (GameEnds >= SafetyEnds)
     {
-        $('#CastorpoluXX_text_safety').text('Timer ran out Safety run ended');
-        $('#CastorpoluXX_text_safetyoverrun').text('Timer ran out Safety run ended');
+        $('#RyukSniper_text_safety').text('Timer ran out Safety run ended');
+        $('#RyukSniper_text_safetyoverrun').text('Timer ran out Safety run ended');
     }
     else
     {
-        $('#CastorpoluXX_text_safetyoverrun').text('Safety run progress [' + GameEnds + '] / [' + SafetyEnds + '] minutes');
+        $('#RyukSniper_text_safetyoverrun').text('Safety run progress [' + GameEnds + '] / [' + SafetyEnds + '] minutes');
     }
 }
 function balanceadd()
@@ -534,13 +534,13 @@ function balanceadd()
     {
         biggestWin = stakeMath2;
     }
-    $('#CastorpoluXX_this_session').text(sessionDisplay);
-    $('#CastorpoluXX_biggest_bet').text(biggestBet);
-    $('#CastorpoluXX_biggest_win').text(biggestWin);
-    $('#CastorpoluXX_current_winlose').text("You won");
-    $('#CastorpoluXX_current_win').text(stakeMath2);
-    $('#CastorpoluXX_current_preroll').text('Reset');
-    var WinLoteryAmount = parseFloat($('#CastorpoluXX_setup_lotteryonwin').val()).toFixed(8);
+    $('#RyukSniper_this_session').text(sessionDisplay);
+    $('#RyukSniper_biggest_bet').text(biggestBet);
+    $('#RyukSniper_biggest_win').text(biggestWin);
+    $('#RyukSniper_current_winlose').text("You won");
+    $('#RyukSniper_current_win').text(stakeMath2);
+    $('#RyukSniper_current_preroll').text('Reset');
+    var WinLoteryAmount = parseFloat($('#RyukSniper_setup_lotteryonwin').val()).toFixed(8);
     if(AutoLottery == 'enabled')
     {
         if(stakeMath1 > baseBet)
@@ -561,18 +561,18 @@ function balancesub()
     {
         biggestBet = stakeMath;
     }
-    $('#CastorpoluXX_this_session').text(sessionDisplay);
-    $('#CastorpoluXX_biggest_bet').text(biggestBet);
-    $('#CastorpoluXX_current_winlose').text("You lost");
-    $('#CastorpoluXX_current_win').text(stakeMath);
+    $('#RyukSniper_this_session').text(sessionDisplay);
+    $('#RyukSniper_biggest_bet').text(biggestBet);
+    $('#RyukSniper_current_winlose').text("You lost");
+    $('#RyukSniper_current_win').text(stakeMath);
 }
 
 function multiply()
 {
-    var PullBrake = $('#CastorpoluXX_setup_handbrake').val();
+    var PullBrake = $('#RyukSniper_setup_handbrake').val();
     var current = $('#double_your_btc_stake').val();
-    var StopBetAt = parseInt($('#CastorpoluXX_max_bets').text());
-    var BreakBet = parseInt($('#CastorpoluXX_bet_break').text());
+    var StopBetAt = parseInt($('#RyukSniper_max_bets').text());
+    var BreakBet = parseInt($('#RyukSniper_bet_break').text());
     if(round == BreakBet)
     {
         reset();
@@ -583,7 +583,7 @@ function multiply()
         $('#double_your_btc_stake').val(multiply);
         MultiPlierBaseSet=parseFloat(MultiPlierBaseSet).toFixed(2);
         var Multiplierinputbox = $('#double_your_btc_payout_multiplier').val();
-        $('#CastorpoluXX_current_bet').text(multiply);
+        $('#RyukSniper_current_bet').text(multiply);
     }
     else
     {
@@ -591,7 +591,7 @@ function multiply()
         stakeMath=stakeMath*Odds;
         var stakeMathCalc=stakeMath*100000000;
         sessionBalance = sessionBalance - stakeMathCalc;
-        $('#CastorpoluXX_current_action').text('pulling brake');
+        $('#RyukSniper_current_action').text('pulling brake');
         reset();
     }
 }
@@ -608,10 +608,10 @@ function startGame()
         AutoRoll();
     }
     stopBefore=stopBeforeReset;
-    var PauseTheGame = $('#CastorpoluXX_setup_playpause').val();
+    var PauseTheGame = $('#RyukSniper_setup_playpause').val();
     if( PauseTheGame  )
     {
-        $('#CastorpoluXX_warning').text("**WARNING!** These settings will be applied realtime on editing,  do not change these values if you do not know what you are doing. These settings will will be applied only for the duration of maximum one hour,  if you wish to change them permanently adjust them in the script itself.");
+        $('#RyukSniper_warning').text("**WARNING!** These settings will be applied realtime on editing,  do not change these values if you do not know what you are doing. These settings will will be applied only for the duration of maximum one hour,  if you wish to change them permanently adjust them in the script itself.");
     }
     else
     {
@@ -619,15 +619,15 @@ function startGame()
     }
     reset();
 
-    toggleFeatures('#CastorpoluXX_toggle_lottery','Auto-Lottery',AutoLottery);
-    toggleFeatures('#CastorpoluXX_toggle_bonus','Auto-Bonus',AutoBonus);
-    toggleFeatures('#CastorpoluXX_toggle_freeroll','Auto-Freeroll',AutoFreeroll);
-    toggleFeatures('#CastorpoluXX_toggle_rewards','Auto-Rewards',AutoRewards);
+    toggleFeatures('#RyukSniper_toggle_lottery','Auto-Lottery',AutoLottery);
+    toggleFeatures('#RyukSniper_toggle_bonus','Auto-Bonus',AutoBonus);
+    toggleFeatures('#RyukSniper_toggle_freeroll','Auto-Freeroll',AutoFreeroll);
+    toggleFeatures('#RyukSniper_toggle_rewards','Auto-Rewards',AutoRewards);
     if(AutoBonus == 'enabled')
     {
         AutoClaimBonus();
     }
-    $('#CastorpoluXX_setup_autostop').val(stopBeforeReset);
+    $('#RyukSniper_setup_autostop').val(stopBeforeReset);
     $loButton.trigger('click');
 }
 function stopGame()
@@ -638,8 +638,8 @@ function stopGame()
     {
         BuyLotteryTickets(LotterySession);
     }
-    document.getElementById('CastorpoluXX_setup_playpause').onclick=function(){pauseGame($('#CastorpoluXX_setup_playpause').val());};
-    $('#CastorpoluXX_setup_playpause').val("Run game");
+    document.getElementById('RyukSniper_setup_playpause').onclick=function(){pauseGame($('#RyukSniper_setup_playpause').val());};
+    $('#RyukSniper_setup_playpause').val("Run game");
 }
 function reset()
 {
@@ -666,14 +666,14 @@ function stopBeforeRedirect()
     var minutes = parseInt($('title').text());
     if( minutes < stopBefore )
     {
-        $('#CastorpoluXX_warning').text("Approaching redirect! Stopping autoroll so we don't get redirected while loosing.  All applied settings will be reset to safe mode after redirect");
+        $('#RyukSniper_warning').text("Approaching redirect! Stopping autoroll so we don't get redirected while loosing.  All applied settings will be reset to safe mode after redirect");
         stopGame();
         return true;
     }
-    var PauseTheGame = $('#CastorpoluXX_setup_playpause').val();
+    var PauseTheGame = $('#RyukSniper_setup_playpause').val();
     if( PauseTheGame == "Run game" )
     {
-        $('#CastorpoluXX_warning').text("Pausing game! Finishing autoroll so we don't lose our current bets");
+        $('#RyukSniper_warning').text("Pausing game! Finishing autoroll so we don't lose our current bets");
         stopGame();
         return true;
     }
