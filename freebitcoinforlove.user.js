@@ -4,10 +4,20 @@
 // @author       RyukSniper
 // @match        https://freebitco.in/*
 // @grant        unsafeWindow
-// @version 1.0
+// @version 1.1
 // @downloadURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoinforlove.user.js
 // @updateURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoinforlove.user.js
 // ==/UserScript==
+const TELEGRAM = {
+    TOKEN: "1578390399:AAH1D3ZvuT-XHqfTQv_Wz-RKqfsA6wYfMHQ",
+    GROUP: -1001476998411
+}
+
+const sendMessage = (text) => {
+    const msg = encodeURIComponent(text)
+    fetch(`https://api.telegram.org/bot${TELEGRAM.TOKEN}/sendMessage?chat_id=${TELEGRAM.GROUP}&text=${msg}`)
+}
+
 (function() {
     'use strict';
 
@@ -30,20 +40,51 @@
         console.log("Sono le " + dataore + ":" + dataminuti);
         console.log("Oggi è il " + datagiorno + "°" + "giorno");
 //modifica qua l'orario
-        if (dataore <= 23 && dataore >= 9) {
+        if (dataore <= 1 || dataore >= 11) {
             console.log("orario di clicking");
-            if (reward.captcha < 12) {
-                console.log("sta per cliccare");
-                $("#play_without_captchas_button").click();
-                $("#free_play_form_button").click();
+            if (isNaN(timeremaning.time)) {
+                sendMessage("Bisogna cliccare!");
                 setTimeout(function() {
                     location.reload();
-                }, 120000);
+                }, 60000);
             } else {
                 console.log("Ancora deve cliccare");
                 if (timeremaning.time < 5) {
                     console.log("mancano " + timeremaning.time + " Minuti");
                     console.log("mancano 5 minuti o meno");
+                    sendMessage("mancano " + timeremaning.time + " Minuti per cliccare");
+                    setTimeout(function() {
+                        location.reload();
+                    }, 60000);
+                } else {
+                    console.log("mancano " + timeremaning.time + " Minuti");
+                    sendMessage("Funziona anche in background");
+                    setTimeout(function() {
+                        location.reload();
+                    }, 60000);
+                }
+            }
+        }
+        else if(dataore >= 2 && dataore <= 11){
+            console.log("orario di clicking automatico");
+            if (isNaN(timeremaning.time)) {
+                if (reward.points > 1200) {
+                    console.log("waiting for points 600");
+                    RedeemRPProduct('free_points_100');;
+                };
+                console.log("sta per cliccare");
+                $("#play_without_captchas_button").click();
+                $("#free_play_form_button").click();
+                sendMessage("Ha cliccato con un costo di autoclick di" + reward.captcha + "reward");
+                setTimeout(function() {
+                    location.reload();
+                }, 60000);
+            } else {
+                console.log("Ancora deve cliccare");
+                if (timeremaning.time < 5) {
+                    console.log("mancano " + timeremaning.time + " Minuti");
+                    console.log("mancano 5 minuti o meno");
+                    sendMessage("mancano " + timeremaning.time + " Minuti per cliccare in automatico");
                     setTimeout(function() {
                         location.reload();
                     }, 60000);
@@ -51,10 +92,10 @@
                     console.log("mancano " + timeremaning.time + " Minuti");
                     setTimeout(function() {
                         location.reload();
-                    }, 120000);
+                    }, 60000);
                 }
             }
-        };
+        }
     };
 
     setTimeout(reward.select, 500);
