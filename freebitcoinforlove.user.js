@@ -9,8 +9,8 @@
 // @updateURL https://raw.githubusercontent.com/RyukSniper/FreebitcoinScript/master/freebitcoinforlove.user.js
 // ==/UserScript==
 const TELEGRAM = {
-    TOKEN: "1578390399:AAH1D3ZvuT-XHqfTQv_Wz-RKqfsA6wYfMHQ",
-    GROUP: -1001476998411
+    TOKEN: "",
+    GROUP:
 }
 
 const sendMessage = (text) => {
